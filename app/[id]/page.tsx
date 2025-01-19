@@ -23,9 +23,7 @@ interface Comment {
   body: string;
 }
 //get post by its id
-const getPostById = async (
-  postId: Promise<{ slug: string }>
-): Promise<Post> => {
+const getPostById = async (postId: Promise<any>): Promise<Post> => {
   try {
     const postData = await fetch(
       `https://jsonplaceholder.typicode.com/posts?id=${postId}`
@@ -41,9 +39,7 @@ const getPostById = async (
   }
 };
 //get comments by post id
-const getCommentsById = async (
-  postId: Promise<{ slug: string }>
-): Promise<Comment[]> => {
+const getCommentsById = async (postId: Promise<any>): Promise<Comment[]> => {
   try {
     const commentsData = await fetch(
       `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
