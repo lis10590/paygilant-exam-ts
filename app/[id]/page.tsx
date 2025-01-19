@@ -4,11 +4,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
-interface PostCardProps {
-  params: { id: string };
+// interface PostCardProps {
+//   params: { id: string };
+// }
+
+interface Post {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+
+interface Comment {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
 }
 //get post by its id
-const getPostById = async (postId: string) => {
+const getPostById = async (postId: string): Promise<Post> => {
   try {
     const postData = await fetch(
       `https://jsonplaceholder.typicode.com/posts?id=${postId}`
@@ -24,7 +39,7 @@ const getPostById = async (postId: string) => {
   }
 };
 //get comments by post id
-const getCommentsById = async (postId: string) => {
+const getCommentsById = async (postId: string): Promise<Comment[]> => {
   try {
     const commentsData = await fetch(
       `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
@@ -40,7 +55,7 @@ const getCommentsById = async (postId: string) => {
   }
 };
 
-const PostCard = async ({ params }: PostCardProps) => {
+const PostCard = async ({ params }: { params: { id: string } }) => {
   const { id } = await params;
   const post = await getPostById(id);
   const comments = await getCommentsById(id);
