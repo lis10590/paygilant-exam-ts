@@ -20,9 +20,8 @@ export default function Error({
     <div className="m-20 flex flex-col justify-center items-center">
       <h1 className="m-5 font-bold text-5xl">Something Went Wrong!</h1>
       <h2 className="m-5 font-bold text-3xl">{error.message}</h2>
-      {error.message ===
-        "Cannot read properties of undefined (reading 'title')" && (
-        <>
+      {error.digest === "2691759133" && (
+        /*"Cannot read properties of undefined (reading 'title')"*/ <>
           <p>It was a temporary state so it wont work!</p>
           <FontAwesomeIcon className="w-12 h-12" icon={faFaceSadTear} />{" "}
         </>
