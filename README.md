@@ -3,8 +3,8 @@
 ## Getting Started
 
 1. Make sure you have Node.js and npm (or yarn) installed.
-2. Clone the repository: `git clone <repository_url>`
-3. Navigate to the project directory: `cd my-awesome-project`
+2. Clone the repository: `git clone https://github.com/lis10590/paygilant-exam-ts.git`
+3. Navigate to the project directory: `cd paygilant-exam-ts`
 4. Install dependencies: `npm install` or `yarn install`
 
 ## Usage
