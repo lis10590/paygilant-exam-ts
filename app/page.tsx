@@ -17,6 +17,7 @@ const getPosts = async () => {
     const posts: Post[] = await response.json();
     return posts;
   } catch (error) {
+    console.error(error);
     throw new Error("Couldn't fetch posts!");
   }
 };

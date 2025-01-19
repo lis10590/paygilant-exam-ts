@@ -23,7 +23,7 @@ export default function Error({
       {error.message ===
         "Cannot read properties of undefined (reading 'title')" && (
         <>
-          <p>It's was a temporary state so it wont work!</p>
+          <p>It was a temporary state so it wont work!</p>
           <FontAwesomeIcon className="w-12 h-12" icon={faFaceSadTear} />{" "}
         </>
       )}

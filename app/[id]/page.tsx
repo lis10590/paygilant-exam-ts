@@ -19,6 +19,7 @@ const getPostById = async (postId: string) => {
     const [post] = await postData.json();
     return post;
   } catch (error) {
+    console.error(error);
     throw new Error("Couldn't fetch post by its id!");
   }
 };
@@ -34,6 +35,7 @@ const getCommentsById = async (postId: string) => {
     const comments = await commentsData.json();
     return comments;
   } catch (error) {
+    console.error(error);
     throw new Error("Couldn't fetch comments by post id!");
   }
 };
