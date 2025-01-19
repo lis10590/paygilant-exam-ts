@@ -17,8 +17,7 @@ const getPosts = async () => {
     const posts: Post[] = await response.json();
     return posts;
   } catch (error) {
-    // toast.error("Failed to fetch posts. Please try again.");
-    return [];
+    throw new Error("Couldn't fetch posts!");
   }
 };
 

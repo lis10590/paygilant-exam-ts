@@ -19,8 +19,7 @@ const getPostById = async (postId: string) => {
     const [post] = await postData.json();
     return post;
   } catch (error) {
-    // toast.error("Failed to fetch posts. Please try again.");
-    return [];
+    throw new Error("Couldn't fetch post by its id!");
   }
 };
 //get comments by post id
@@ -35,8 +34,7 @@ const getCommentsById = async (postId: string) => {
     const comments = await commentsData.json();
     return comments;
   } catch (error) {
-    // toast.error("Failed to fetch comments. Please try again.");
-    return [];
+    throw new Error("Couldn't fetch comments by post id!");
   }
 };
 
