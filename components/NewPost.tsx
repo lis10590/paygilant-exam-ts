@@ -23,6 +23,7 @@ const NewPost = ({ onAddPost, onClose }: NewPostProps) => {
     event.preventDefault();
     onAddPost({ id: Date.now(), title, body });
     onClose();
+    // toast.success("New post added successfully!"); // Display toast notification
   };
 
   return (

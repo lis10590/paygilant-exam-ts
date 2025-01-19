@@ -1,5 +1,5 @@
 //individual post page
-import Comments from "../components/Comments";
+import Comments from "../../components/Comments";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
@@ -7,19 +7,43 @@ import Link from "next/link";
 interface PostCardProps {
   params: { id: string };
 }
+//get post by its id
+const getPostById = async (postId: string) => {
+  try {
+    const postData = await fetch(
+      `https://jsonplaceholder.typicode.com/posts?id=${postId}`
+    );
+    if (!postData.ok) {
+      throw new Error(`HTTP error! status: ${postData.status}`);
+    }
+    const [post] = await postData.json();
+    return post;
+  } catch (error) {
+    // toast.error("Failed to fetch posts. Please try again.");
+    return [];
+  }
+};
+//get comments by post id
+const getCommentsById = async (postId: string) => {
+  try {
+    const commentsData = await fetch(
+      `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
+    );
+    if (!commentsData.ok) {
+      throw new Error(`HTTP error! status: ${commentsData.status}`);
+    }
+    const comments = await commentsData.json();
+    return comments;
+  } catch (error) {
+    // toast.error("Failed to fetch comments. Please try again.");
+    return [];
+  }
+};
 
 const PostCard = async ({ params }: PostCardProps) => {
   const { id } = await params;
-  //fetching post by id
-  const postData = await fetch(
-    `https://jsonplaceholder.typicode.com/posts?id=${id}`
-  );
-  const [post] = await postData.json();
-  //fetching comments by id
-  const commentsData = await fetch(
-    `https://jsonplaceholder.typicode.com/comments?postId=${id}`
-  );
-  const comments = await commentsData.json();
+  const post = await getPostById(id);
+  const comments = await getCommentsById(id);
 
   return (
     <div>
