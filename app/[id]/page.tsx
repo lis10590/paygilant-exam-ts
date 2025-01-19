@@ -23,7 +23,7 @@ interface Comment {
   body: string;
 }
 //get post by its id
-const getPostById = async (postId: Promise<any>): Promise<Post> => {
+const getPostById = async (postId: any): Promise<Post> => {
   try {
     const postData = await fetch(
       `https://jsonplaceholder.typicode.com/posts?id=${postId}`
@@ -39,7 +39,7 @@ const getPostById = async (postId: Promise<any>): Promise<Post> => {
   }
 };
 //get comments by post id
-const getCommentsById = async (postId: Promise<any>): Promise<Comment[]> => {
+const getCommentsById = async (postId: any): Promise<Comment[]> => {
   try {
     const commentsData = await fetch(
       `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
@@ -55,11 +55,7 @@ const getCommentsById = async (postId: Promise<any>): Promise<Comment[]> => {
   }
 };
 
-const PostCard = async ({
-  params,
-}: {
-  params: { id: Promise<{ slug: string }> };
-}) => {
+const PostCard = async ({ params }: { params: { id: any } }) => {
   const { id } = await params;
   const post = await getPostById(id);
   const comments = await getCommentsById(id);
